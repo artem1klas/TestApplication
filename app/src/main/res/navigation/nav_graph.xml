@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/cameraFragment">
+
+    <fragment
+        android:id="@+id/albumFragment"
+        android:name="com.example.testapplication.ui.collection.other.CollectionFragment"
+        android:label="AlbumFragment"
+        tools:layout="@layout/fragment_collection"/>
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="com.example.testapplication.ui.camera.CameraFragment"
+        android:label="CameraFragment"
+        tools:layout="@layout/fragment_camera">
+        <action
+            android:id="@+id/action_cameraFragment_to_albumFragment"
+            app:destination="@id/albumFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.testapplication.ui.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings"/>
+</navigation>
