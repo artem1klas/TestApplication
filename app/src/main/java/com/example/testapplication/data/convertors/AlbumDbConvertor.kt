@@ -9,7 +9,7 @@ class AlbumDbConvertor {
         var idsPictures = ""
 
         if (album.pictures.isNotEmpty()){
-            idsPictures = album.pictures.joinToString ( "," )
+            idsPictures = album.pictures.map{it.toString()}.joinToString ( "," )
         }
         return AlbumEntity(
             name = album.name,

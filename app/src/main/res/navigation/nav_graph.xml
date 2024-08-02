@@ -9,19 +9,24 @@
         android:id="@+id/albumFragment"
         android:name="com.example.testapplication.ui.collection.other.CollectionFragment"
         android:label="AlbumFragment"
-        tools:layout="@layout/fragment_collection"/>
+        tools:layout="@layout/fragment_collection">
+        <action
+            android:id="@+id/action_albumFragment_to_albumPlayerFragment"
+            app:destination="@id/albumPlayerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/cameraFragment"
         android:name="com.example.testapplication.ui.camera.CameraFragment"
         android:label="CameraFragment"
-        tools:layout="@layout/fragment_camera">
-        <action
-            android:id="@+id/action_cameraFragment_to_albumFragment"
-            app:destination="@id/albumFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_camera"/>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.testapplication.ui.settings.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings"/>
+    <fragment
+        android:id="@+id/albumPlayerFragment"
+        android:name="com.example.testapplication.ui.album_player.AlbumPlayerFragment"
+        android:label="AlbumPlayerFragment"
+        tools:layout="@layout/fragment_album_player"/>
 </navigation>

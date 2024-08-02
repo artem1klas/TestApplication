@@ -42,6 +42,10 @@ class AlbumViewModel(private val albumInteractorImpl: AlbumInteractorImpl) : Vie
         return album
     }
 
+    fun albumIsExist(name: String): Boolean {
+        return albumInteractorImpl.albumIsExist(name)
+    }
+
 
 
 }

@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.testapplication.R
 import com.example.testapplication.databinding.FragmentAlbumBinding
 import com.example.testapplication.domain.models.Album
+import com.example.testapplication.ui.album_player.AlbumPlayerFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AlbumFragment: Fragment() {
@@ -42,9 +45,14 @@ class AlbumFragment: Fragment() {
         }
 
         binding.openAlbumButton.setOnClickListener {
-            val album = viewModel.getAlbum(binding.editText.text.toString())
-            if (album is Album){
-                Toast.makeText(requireContext(), "Альбом ${album.name} получен", Toast.LENGTH_SHORT).show()
+            val name = binding.editText.text.toString()
+            if (viewModel.albumIsExist(name)){
+                Toast.makeText(requireContext(), "Альбом ${name} получен", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(
+                    R.id.action_albumFragment_to_albumPlayerFragment,
+//                    AlbumPlayerFragment.createArgs(name)
+                )
+
             } else {
                 Toast.makeText(requireContext(), "Ошибка", Toast.LENGTH_SHORT).show()
             }
