@@ -101,7 +101,7 @@ class CameraFragment : Fragment() {
     private fun saveImage(id: Int) {
 
         val file =
-            File(requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES), "$id.jpg")
+            File(requireContext().filesDir, "$id.jpg")
         val outputStream = FileOutputStream(file)
         if (filePhoto != null) {
             filePhoto!!.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)

@@ -12,15 +12,9 @@
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="5dp"/>
 
-    <TextView
-        android:id="@+id/pictureTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="name"
-        app:layout_constraintTop_toBottomOf="@id/pictureImage"
-        app:layout_constraintLeft_toLeftOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

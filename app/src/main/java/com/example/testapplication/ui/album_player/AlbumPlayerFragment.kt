@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.testapplication.R
 import com.example.testapplication.databinding.FragmentAlbumPlayerBinding
 import com.example.testapplication.domain.models.Album
 import com.example.testapplication.domain.models.Picture
+import com.example.testapplication.ui.picture.PictureFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AlbumPlayerFragment : Fragment() {
@@ -19,12 +22,16 @@ class AlbumPlayerFragment : Fragment() {
 
     private val viewModel by viewModel<AlbumPlayerViewModel>()
 
+    private lateinit var onPictureClick: (Int) -> Unit
+
     private var _binding: FragmentAlbumPlayerBinding? = null
     private val binding get() = _binding!!
 
     private val pictures = ArrayList<Int>()
 
-    private val adapter = PicturesAdapter(pictures)
+    private val adapter = PicturesAdapter(pictures){id ->
+            onPictureClick(id)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,7 +57,13 @@ class AlbumPlayerFragment : Fragment() {
         }
 
 
-
+        onPictureClick = {
+            id ->
+            findNavController().navigate(
+                R.id.action_albumPlayerFragment_to_pictureFragment,
+                PictureFragment.createArgs(id)
+            )
+        }
 
     }
 

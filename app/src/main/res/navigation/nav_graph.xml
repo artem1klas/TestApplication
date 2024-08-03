@@ -28,5 +28,14 @@
         android:id="@+id/albumPlayerFragment"
         android:name="com.example.testapplication.ui.album_player.AlbumPlayerFragment"
         android:label="AlbumPlayerFragment"
-        tools:layout="@layout/fragment_album_player"/>
+        tools:layout="@layout/fragment_album_player">
+        <action
+            android:id="@+id/action_albumPlayerFragment_to_pictureFragment"
+            app:destination="@id/pictureFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pictureFragment"
+        android:name="com.example.testapplication.ui.picture.PictureFragment"
+        android:label="PictureFragment"
+        tools:layout="@layout/fragment_picture"/>
 </navigation>
