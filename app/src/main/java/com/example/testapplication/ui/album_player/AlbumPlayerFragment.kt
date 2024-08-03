@@ -16,22 +16,21 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class AlbumPlayerFragment : Fragment() {
 
 //    private lateinit var album: Album
-//
-//    private val viewModel by viewModel<AlbumPlayerViewModel>()
-//
+
+    private val viewModel by viewModel<AlbumPlayerViewModel>()
+
     private var _binding: FragmentAlbumPlayerBinding? = null
     private val binding get() = _binding!!
-//
-//    private val pictures = ArrayList<Int>()
-//
-//    private val adapter = PicturesAdapter(pictures)
+
+    private val pictures = ArrayList<Int>()
+
+    private val adapter = PicturesAdapter(pictures)
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentAlbumPlayerBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -39,53 +38,53 @@ class AlbumPlayerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding.albumList.layoutManager = GridLayoutManager(requireContext(), 2)
-//
-//        binding.albumList.adapter = adapter
-//
-//
-//        val nameAlbum = requireArguments().getString(ALBUM_NAME)
-//        viewModel.fillData(nameAlbum!!)
-//        viewModel.observeState().observe(viewLifecycleOwner){
-//            render(it)
-//        }
+        binding.albumList.layoutManager = GridLayoutManager(requireContext(), 2)
+
+        binding.albumList.adapter = adapter
+
+
+        val nameAlbum = requireArguments().getString(ALBUM_NAME)
+        viewModel.fillData(nameAlbum!!)
+        viewModel.observeState().observe(viewLifecycleOwner){
+            render(it)
+        }
 
 
 
 
     }
 
-//    fun render(state: AlbumPlayerState){
-//        when(state) {
-//            is AlbumPlayerState.Loading -> {
-//                binding.nameAlbum.isVisible = false
-//                binding.albumList.isVisible = false
-//                binding.progressBar.isVisible = true
-//            }
-//            is AlbumPlayerState.Content -> {
-//                pictures.clear()
-//                pictures.addAll(state.album.pictures)
-//                binding.nameAlbum.text = album.name
-//                binding.nameAlbum.isVisible = true
-//                binding.albumList.isVisible = true
-//                binding.progressBar.isVisible = false
-//            }
-//        }
-//        adapter.notifyDataSetChanged()
-//
-//    }
-//
+    fun render(state: AlbumPlayerState){
+        when(state) {
+            is AlbumPlayerState.Loading -> {
+                binding.nameAlbum.isVisible = false
+                binding.albumList.isVisible = false
+                binding.progressBar.isVisible = true
+            }
+            is AlbumPlayerState.Content -> {
+                pictures.clear()
+                pictures.addAll(state.album.pictures)
+                binding.nameAlbum.text = state.album.name
+                binding.nameAlbum.isVisible = true
+                binding.albumList.isVisible = true
+                binding.progressBar.isVisible = false
+            }
+        }
+        adapter.notifyDataSetChanged()
+
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-//    companion object {
-//        const val ALBUM_NAME = "album_name"
-//
-//        fun createArgs(albumName: String) : Bundle = bundleOf(ALBUM_NAME to albumName)
-//
-//    }
+    companion object {
+        const val ALBUM_NAME = "album_name"
+
+        fun createArgs(albumName: String) : Bundle = bundleOf(ALBUM_NAME to albumName)
+
+    }
 
 
 

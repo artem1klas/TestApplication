@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
@@ -100,7 +101,7 @@ class CameraFragment : Fragment() {
     private fun saveImage(id: Int) {
 
         val file =
-            File(requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES), ".jpg")
+            File(requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES), "$id.jpg")
         val outputStream = FileOutputStream(file)
         if (filePhoto != null) {
             filePhoto!!.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)

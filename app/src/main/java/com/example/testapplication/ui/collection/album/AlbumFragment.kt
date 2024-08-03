@@ -9,15 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.testapplication.R
 import com.example.testapplication.databinding.FragmentAlbumBinding
-import com.example.testapplication.domain.models.Album
 import com.example.testapplication.ui.album_player.AlbumPlayerFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AlbumFragment: Fragment() {
 
     private var _binding : FragmentAlbumBinding? = null
-    private val binding
-        get() = _binding!!
+    private val binding get() = _binding!!
 
     private val viewModel by viewModel<AlbumViewModel>()
 
@@ -50,7 +48,7 @@ class AlbumFragment: Fragment() {
                 Toast.makeText(requireContext(), "Альбом ${name} получен", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(
                     R.id.action_albumFragment_to_albumPlayerFragment,
-//                    AlbumPlayerFragment.createArgs(name)
+                    AlbumPlayerFragment.createArgs(name)
                 )
 
             } else {
